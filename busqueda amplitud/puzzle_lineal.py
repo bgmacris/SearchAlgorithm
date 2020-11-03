@@ -4,7 +4,7 @@ Este codigo es para resolver un puzle lineal con busqueda en amplitud
 
 from arbol import Nodo
 
-def buscar_solucion_BFS(estado_inicial, solucion):
+def buscar_solucion(estado_inicial, solucion):
     solucionado = False
     '''
     nodos_visitados nos servira para saber que nodos hemos visto
@@ -68,6 +68,6 @@ def buscar_solucion_BFS(estado_inicial, solucion):
 if __name__ == "__main__":
     estado_inicial = [3,4,2,1]
     solucion = [1,2,3,4]
-    nodo_solucion = buscar_solucion_BFS(estado_inicial, solucion)
+    nodo_solucion = buscar_solucion(estado_inicial, solucion)
     for i in nodo_solucion:
         print(i)
