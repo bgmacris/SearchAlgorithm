@@ -1,6 +1,11 @@
 # SearchAlgorithm
 Algoritmos de busqueda y resolucion de problemas.
 
+# Busqueda Binaria
+¡IMPORTANTE! Para que esta función sirva es necesario una lista donde los valores estén ordenados y sean secuencias numéricas que se puedan comparar.
+
+Esta búsqueda nos permite buscar un elemento en una lista sin necesidad de iterar toda la lista.
+Separando la lista en un punto iniciar y uno final, calculamos el valor medio de los puntos y lo comparamos con el valor que buscamos, y dependiendo si es mayor, menor o igual sabemos en que parte de la lista nos toca buscar.
 
 # Busqueda amplitud
 En este problema tenemos que resolver el puzle 1,2,3,4 que nos lo darán desordenado.
