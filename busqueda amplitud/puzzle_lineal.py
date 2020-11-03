@@ -4,7 +4,7 @@ Este codigo es para resolver un puzle lineal con busqueda en amplitud
 
 from arbol import Nodo
 
-def buscar_solucion(estado_inicial, solucion):
+def buscar_solucion_BFS(estado_inicial, solucion):
     solucionado = False
     '''
     nodos_visitados nos servira para saber que nodos hemos visto
@@ -13,7 +13,6 @@ def buscar_solucion(estado_inicial, solucion):
     '''
     nodos_visitados = []
     nodos_frontera = []
-    combinaciones = []
     nodoInicial = Nodo(estado_inicial)
     nodos_frontera.append(nodoInicial)
 
@@ -22,12 +21,10 @@ def buscar_solucion(estado_inicial, solucion):
         nodo = nodos_frontera.pop(0)
         nodos_visitados.append(nodo)
         
-        # Combinaciones nos servira como guia para ver los pasos que ha realizado
-        combinaciones.append(nodo)
         if nodo.get_datos() == solucion:
             # Solucion encontrada
             solucionado = True
-            return combinaciones
+            return nodo
         else:
             # Expandir nodo hijo
             dato_nodo = nodo.get_datos()
@@ -66,8 +63,13 @@ def buscar_solucion(estado_inicial, solucion):
             nodo.set_hijos([hijo_izquierda,hijo_central,hijo_derecha])
 
 if __name__ == "__main__":
-    estado_inicial = [3,4,2,1]
+    estado_inicial = [4,2,3,1]
     solucion = [1,2,3,4]
-    nodo_solucion = buscar_solucion(estado_inicial, solucion)
-    for i in nodo_solucion:
-        print(i)
+    nodo_solucion = buscar_solucion_BFS(estado_inicial, solucion)
+    resultado = []
+    nodo = nodo_solucion
+    while nodo.get_padre() != None:
+        resultado.append(nodo.get_datos())
+        nodo = nodo.get_padre()
+    resultado.append(estado_inicial)
+    print(resultado[::-1])
