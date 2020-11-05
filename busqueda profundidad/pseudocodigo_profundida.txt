@@ -1,0 +1,14 @@
+nodo_inicial = estado inicial 
+nodos_frontera = Oila LIFO
+nodos_visitados = Lista
+almacenar nodo_inicial en nodos_frontera 
+mientras nodos_frontera no vacío:
+    nodo_actual = extraer un nodo de nodos_frontera
+    si nodo_actual == solucion:
+        salir con solucion
+    
+    introducir nodo_actual en nodos_visitados
+    por cada operador:
+        nodo_hijo = operador(nodo_actual)
+        si nodo_hijo no en nodos_visitados ni nodos_frontera:
+            introducir nodo_hijo en nodos_frontera

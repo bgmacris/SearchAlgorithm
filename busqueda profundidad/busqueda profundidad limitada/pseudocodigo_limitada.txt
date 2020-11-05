@@ -1,0 +1,17 @@
+funcion DFS_limitado(nodo, solucion, visitados, limite):
+    añadir nodo a visitados
+    si nodo == solucion:
+        salir con solucion
+    si no si limite == 0:
+        salir con corte
+    si no: 
+        por cada operador:
+        nodo_hijo = operador(nodo)
+        si nodo_hijo no en visitados:
+        s = DFS_rec(nodo_hijo, solucion, visitados, limite-1)
+
+nodo = estado inicial
+visitados = lista
+solucion = solucion
+limite = limite_niveles
+s = DFS_limitado(nodo, solucion, visitados, limite)

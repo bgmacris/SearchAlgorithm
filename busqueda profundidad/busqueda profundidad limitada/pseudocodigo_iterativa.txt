@@ -1,0 +1,10 @@
+funcion DFS_prof_iter(nodo, solución):
+para limite de 1 a infinito:
+    visitados = lista
+    s = DFS_limitado(nodo, solicion, visitados, limite)
+    si s != corte_limite:
+        salir con s 
+
+nodo = estado inicial
+solucion = solicion
+s = DFS_prof_iter(nodo, solucion)
