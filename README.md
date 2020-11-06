@@ -7,14 +7,41 @@ Algoritmos de busqueda y resolucion de problemas.
 Esta búsqueda nos permite buscar un elemento en una lista sin necesidad de iterar toda la lista.
 Separando la lista en un punto iniciar y uno final, calculamos el valor medio de los puntos y lo comparamos con el valor que buscamos, y dependiendo si es mayor, menor o igual sabemos en que parte de la lista nos toca buscar.
 
-# Busqueda amplitud
-En este problema tenemos que resolver el puzle 1,2,3,4 que nos lo darán desordenado y otro problema de buscar la solucion de la mejor ruta para ir de un punto inicial al objetivo, y pasar por los minimos nodos posibles
+# Busquedas amplietud-profundidad-recursiva
+Todas las busquedas, son busquedas no informadas. Y itilizaremos el mismo ejemplo del puzle linea y viaje en avion, de esta manera podemos comprovar cual nos da la mejor solución.
+Una solución optima en estos dos ejemplos es solucionar el problema con los minimos pasos posibles y recorriendo el minimo de niveles posibles del grifo.
 
-arbol.py ->Utilizaremos la clase nodo, para administrar los nodos(construir un árbol genealógico).
-puzle_lineal.py -> Sera el codigo que resuelve el problema del puzle, para crear los nodos utilizira 3 operadores, operador izquieda- operador central-operador derecha.
+# Buesqueda en amplietud
+Esta busqueda lo que hace es desde el nodo principal ir decendiendo nivieles, por cada nivel se recorren todos los nodos hasta dar con la solución. 
 
-Operador izquierda: Operador izquierda lo que va ha hacer es cambiar la posicion 0 con la 1, [1,2,3,4] -> [2,1,3,4]
-Operador central: Operador central lo que va ha hacer es cambiar la posicion 1 con la 2, [1,2,3,4] -> [1,3,2,4]
-Operador derecha: Operador derecha lo que va ha hacer es cambiar la posicion 0 con la 1, [1,2,3,4] -> [1,2,4,3]
+Output puzle_linea:
+[[4, 2, 3, 1], [2, 4, 3, 1], [2, 3, 4, 1], [2, 3, 1, 4], [2, 1, 3, 4], [1, 2, 3, 4]]
 
-busqueda_viaje.py -> Es el codigo para resolver el problema del viaje.
+Output viaje:
+['malaga', 'barcelona', 'santiago']
+
+# Busqueda en profundidad
+Esta busqueda recorre todo el grado de manera ordenada pero no uniforme, consiste en expandir todos los nodos que va localizando y recorrer de forma recurrente un camino concreto, cuando no quedan mas nodos en ese camino, regresa en el nodo anterior y repite el mismo proceso con los nodos hermanos.
+
+Output:
+[[4, 2, 3, 1], [4, 2, 1, 3], [4, 1, 2, 3], [4, 1, 3, 2], [4, 3, 1, 2], [3, 4, 1, 2], [3, 4, 2, 1], [3, 2, 4, 1], [3, 2, 1, 4], [3, 1, 2, 4], [1, 3, 2, 4], [1, 2, 3, 4]]
+Esta no es una solución optima para este problema, ya que nosotros buscamos los minimos pasos para solucionar el problema.
+
+# Busqueda recursiva
+Si a la busqueda en profundida le aplicamos recursividad, conseguiremos menos uso de memoria RAM, ya que dejamos de utilizar la lista de nodos visitados. Pero eso no es del todo bueno, ya que el codigo se podria poner en un bucle infinito y no salir de alli.
+Tanto si aplicamos recursividad como no, la solución con este metodo para este tipo de problemas solo seria eficaz si tenemos la suerte de encontrarla en los primeros nodos.
+
+Output:
+[[4, 2, 3, 1], [2, 4, 3, 1], [2, 3, 4, 1], [3, 2, 4, 1], [3, 4, 2, 1], [4, 3, 2, 1], [4, 3, 1, 2], [3, 4, 1, 2], [3, 1, 4, 2], [1, 3, 4, 2], [1, 4, 3, 2], [4, 1, 3, 2], [4, 1, 2, 3], [1, 4, 2, 3], [1, 2, 4, 3], [2, 1, 4, 3], [2, 1, 3, 4], [1, 2, 3, 4]]
+
+# Busqueda profundidad limitada
+Con limitar la busqueda en profundidad, podemos evidar que el programa se quede en bucle en algun nodo. En caso de no encontrar la solución devuelve None.
+
+# Busqueda profundidad iterativa
+Partiendo de esta mejora podemos conseguir, además, que el algoritmo sea optimo. La idea es ir repitiendo la busqueda de forma iterativa pero incrementando el nivel de profundidad en cada iteración.
+En este caso utilizamos el problema de los aviones, que si os fijais es la misma salida que en busqueda amplietd. La solución es correcta ya que hace los minimos transbordos posibles para llegar a su meta.
+
+Output:
+['malaga', 'barcelona', 'santiago']
+
+
