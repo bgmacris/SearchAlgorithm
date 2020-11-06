@@ -1,0 +1,15 @@
+funcion DFS_rec(nodo, solucion, visitados):
+    añadir nodo a visitados
+    si nodo == solucion:
+        salir con solucion
+    si no:
+        por cada operador:
+            nodo_hijo = operador(nodo)
+            si nodo_hijo no en visitados:
+                s = DFS_rec(nodo_hijo, solución, visitados)
+                salir con s
+    
+nodo = estado inicial
+visitados = lista
+solucion = solucion
+s = DFS_rec(nodo, solucion, visitados)
